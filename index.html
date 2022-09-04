@@ -31,16 +31,87 @@
                     top: 0.0%;
                 }
             </style>
-        
+
+    <style>
+        .tooltipt {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltipt .tooltiptext {
+  visibility: hidden;
+  width: 1000px;
+  height: 80px;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  border:3px solid black;
+  bottom: 0%;
+  left: -200%;
+  margin-left: -60px;
+  background-color:white;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltipt:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.content {
+  padding: 5px 17px 17px 17px;
+  width: 990px;
+  height: 70px;
+  overflow-y: scroll;
+  mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 17px, black 17px);
+  mask-size: 100% 20000px;
+  mask-position: left bottom;
+  -webkit-mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 17px, black 17px);
+  -webkit-mask-size: 100% 20000px;
+  -webkit-mask-position: left bottom;
+  transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+}
+
+.content:hover {
+  -webkit-mask-position: left top;
+}
+
+.wrapper {
+  float: left;
+  animation: background 5s infinite alternate;
+}
+    </style>
+	    
 </head>
-<body>    
+<body style="background-color:lightgrey;">
     
              <h3 align="center" style="font-size:24px"><b>Past NHFP Host Institutions and Nearby Institutions with Astronomy Faculty</b></h3>
              
     
-            <h1 align="center" style = "font-size:16px">Credit: M. Volz, A. Cucchiara (NASA HQ)</h1>
-            
-    
+             <h1 align="center" style = "font-size:18px">
+	       <div class="tooltipt">Detailed Description
+		 <span class="tooltiptext">
+		   <div class="wrapper">
+		     <div class="content">
+		       <p>This navigable map presents the location and aggregated number of NHFP fellows over the past 30 years. Each red circle is centered on a single host institution, while the radius of the circle is proportional to the overall number of fellows hosted. Clicking the circle will provide a breakdown of Hubble (H), Sagan (S), and Einstein (E) fellows. For simplicity, earlier fellows (e.g. Spitzer) have been aggregated to one of these three fellowships.</p>
+		
+		       <p>The pins represent the location of Hispanic Serving Institutions (HSI), Black Serving Institutions (BSI), Historically Black Colleges and Universities (HBCU), and small research institutions (R2) where there are at least two astronomers (faculty, postdocs, researchers), based on the institution webpages (source: Carnegie Classification). Large research institutions (R1) are not marked unless they also fall in one of the previous classifications. (Acknowledgment: Máire Volz, Antonino Cucchiara (NASA HQ). Comments or Questions: Antonino.cucchiara@nasa.gov</p>
+
+		       <p>Credit: M. Volz, A. Cucchiara (NASA HQ)</p>
+		       
+		     </div>
+		   </div>
+		 </span>
+	       </div>
+	     </h1>
+	     <!--<br>-->
             <div class="folium-map" id="map_d00a41d48213a2a94af649b4d0cb03b0" ></div>
         
 </body>
